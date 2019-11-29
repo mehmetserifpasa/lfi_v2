@@ -2,8 +2,8 @@ import requests, socket, sys, argparse, random, threading, OpenSSL,time
 from bs4 import BeautifulSoup
 
 
-LFI = [lfi.strip() for lfi in open("/Users/mehmetserifpasa/Desktop/python-denemeler/brsurdp/files/lfi.txt")]
-USERAGENT = [agent.strip() for agent in open('/Users/mehmetserifpasa/Desktop/python-denemeler/brsurdp/files/user-agents.txt')]
+LFI = [lfi.strip() for lfi in open("lfi.txt")]
+USERAGENT = [agent.strip() for agent in open('user-agents.txt')]
 zm = time.time()
 
 CYAN = '\033[36m'
