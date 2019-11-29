@@ -44,7 +44,7 @@ def scanner():
         else:
             pass
 
-        print(req.url+" -- status_code:"+str(len(req.status_code))+"-- Lenght: "+str(len(req_Text)))
+        print(req.url + " -- status_code:" + str(req.status_code) + "-- Lenght: "+str(len(req_Text)))
     except requests.exceptions.ConnectionError:
         pass
     except OpenSSL.SSL.Error:
